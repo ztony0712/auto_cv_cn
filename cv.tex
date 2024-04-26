@@ -1,217 +1,187 @@
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
-%	The MIT License (MIT)
-%
-%	Copyright (c) 2021 Jitin Nair
-%
-%	Permission is hereby granted, free of charge, to any person obtaining a copy
-%	of this software and associated documentation files (the "Software"), to deal
-%	in the Software without restriction, including without limitation the rights
-%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-%	copies of the Software, and to permit persons to whom the Software is
-%	furnished to do so, subject to the following conditions:
-%	
-%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-%	THE SOFTWARE.
-%	
-%
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
+% Document class and font size
+\documentclass[a4paper,9pt]{extarticle}
 
-%----------------------------------------------------------------------------------------
-%	DOCUMENT DEFINITION
-%----------------------------------------------------------------------------------------
-
-% article class because we want to fully customize the page and not use a cv template
-\documentclass[a4paper,12pt]{article}
-
-%----------------------------------------------------------------------------------------
-%	FONT
-%----------------------------------------------------------------------------------------
-
-% % fontspec allows you to use TTF/OTF fonts directly
-% \usepackage{fontspec}
-% \defaultfontfeatures{Ligatures=TeX}
-
-% % modified for ShareLaTeX use
-% \setmainfont[
-% SmallCapsFont = Fontin-SmallCaps.otf,
-% BoldFont = Fontin-Bold.otf,
-% ItalicFont = Fontin-Italic.otf
-% ]
-% {Fontin.otf}
-
-%----------------------------------------------------------------------------------------
-%	PACKAGES
-%----------------------------------------------------------------------------------------
-\usepackage{url}
-\usepackage{parskip} 	
-
-%other packages for formatting
-\RequirePackage{color}
-\RequirePackage{graphicx}
-\usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[scale=0.9]{geometry}
-
-%tabularx environment
+% Packages
+\usepackage[utf8]{inputenc} % For input encoding
+\usepackage{geometry} % For page margins
+\geometry{letterpaper, margin=0.75in} % Set paper size and margins
+\usepackage{titlesec} % For section title formatting
+\usepackage{enumitem} % For itemized list formatting
+\usepackage{hyperref} % For hyperlinks
 \usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{fontawesome}
 
-%for lists within experience section
-\usepackage{enumitem}
-
-% centered version of 'X' col. type
-\newcolumntype{C}{>{\centering\arraybackslash}X} 
-
-%to prevent spillover of tabular into next pages
-\usepackage{supertabular}
-\usepackage{tabularx}
-\newlength{\fullcollw}
-\setlength{\fullcollw}{0.47\textwidth}
-
-%custom \section
-\usepackage{titlesec}				
-\usepackage{multicol}
-\usepackage{multirow}
-
-%CV Sections inspired by: 
-%http://stefano.italians.nl/archives/26
-\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{10pt}{10pt}
-
-%for publications
-\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
-
-%Setup hyperref package, and colours for links
-\usepackage[unicode, draft=false]{hyperref}
-\definecolor{linkcolour}{rgb}{0,0.2,0.6}
-\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
-\addbibresource{citations.bib}
-\setlength\bibitemsep{1em}
-
-%for social icons
-\usepackage{fontawesome5}
-
-%debug page outer frames
-%\usepackage{showframe}
-
-
-% job listing environments
-\newenvironment{jobshort}[2]
-    {
-    \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
-    \end{tabularx}
-    }
-    {
-    }
-
-\newenvironment{joblong}[2]
-    {
-    \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
-    \end{tabularx}
-    \begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
-    }
-    {
-    \end{itemize}
-    \end{minipage}    
-    }
+\renewcommand{\refname}{PUBLICATIONS}
 
 
 
-%----------------------------------------------------------------------------------------
-%	BEGIN DOCUMENT
-%----------------------------------------------------------------------------------------
+% Formatting
+\setlist{noitemsep} % Removes item separation
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}[\titlerule] % Section title format
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip} % Section title spacing
+%%%%%%%%%%
+
+% Begin document
 \begin{document}
 
-% non-numbered pages
-\pagestyle{empty} 
+% Disable page numbers
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead{}
+\fancyhead[L]{\textit{Yimin Zhao}}
+\fancyhead[R]{\textit{January 2024}}
+\thispagestyle{empty} % Remove header from the first page
 
-%----------------------------------------------------------------------------------------
-%	TITLE
-%----------------------------------------------------------------------------------------
+% Header
+\begin{center}
+\textbf{\Huge Yimin Zhao}\\ % Name
 
-% \begin{tabularx}{\linewidth}{ @{}X X@{} }
-% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
-% \raisebox{-0.05\height}\faGithub\ username \ | \
-% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
-% \end{tabularx}
+\faEnvelope \href{mailto:ztony0712@outlook.com}{ztony0712@outlook.com} | 
+\faGlobe \href{https://ztony0712.github.io/}{https://ztony0712.github.io/} | 
+\faHome Kunming, China % Contact info
+\end{center}
 
-\begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{Your Name} \\[7.5pt]
-\href{https://github.com/username}{\raisebox{-0.05\height}\faGithub\ username} \ $|$ \ 
-\href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
-\href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
-\href{mailto:email@mysite.com}{\raisebox{-0.05\height}\faEnvelope \ email@mysite.com} \ $|$ \ 
-\href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
-\end{tabularx}
+\section*{PERSONAL SUMMARY}
+\noindent
+Interested in developing intelligent robots, such as autonomous vehicle and drone. Strong project experience in simulation, AI development, programming, and EEG analytics. Conducting research in Autonomous School Bus Group supervised by \href{https://guppy.mpe.nus.edu.sg/~mpeangh/}{Prof. Marcelo H. Ang Jr.} in Advanced Robotics Centre of National University of Singapore. Looking for fully funded PhD positions. \\
 
-%----------------------------------------------------------------------------------------
-% EXPERIENCE SECTIONS
-%----------------------------------------------------------------------------------------
+\noindent
+\textit{Strength:} Have strong execution and sense of responsibility, passionate to explore and learn.
 
-%Interests/ Keywords/ Summary
-\section{Summary}
-This CV is automatically generated and deployed using the \href{https://github.com/jitinnair1/autoCV}{autoCV} template along with GitHub Actions such that a new version of the CV is compiled, published and ready for use when the cv.tex file is updated. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
+% Education Section
+\section*{EDUCATION}
+\noindent
+\textbf{National University of Singapore}, Singapore, Singapore \hfill Aug. 2023 | Present \\ % University name and location
+\textit{Master of Science in Robotics} \hfill GPA: Coming Soon \\
+\textit{Supervisor:} \href{https://guppy.mpe.nus.edu.sg/~mpeangh/}{Prof. Marcelo H. Ang Jr.} \\
+\textit{Thesis:} Coming Soon \\
+\textit{Representative Modules:} Robot Vision and AI; Autonomous Mobile Robotics; Materials, Sensors, Actuators and Fabrication Technologies; Robot Kinematics; Robot Dynamics and Control  \\
 
-%Experience
-\section{Work Experience}
+\noindent
+\textbf{Southwest Jiaotong University}, Chengdu, China \hfill Sept. 2019 | Jun. 2023 \\ % University name and location
+\textit{Bachelor of Science in Computer Science}  \hfill Average Score: 88.6/100 \\ % Degree and GPA 
+\textit{Supervisor:} \href{https://faculty.swjtu.edu.cn/gujin/zh_CN/index.htm}{Lecturer Jin Gu} \\
+\textit{Thesis:} Research on EEG emotion recognition based on multi-feature fusion \\% Additional info
+\textit{Representative Modules:} Machine Learning; Algorithms and Data Structures; Artificial Intelligence; Data Mining; Object Oriented Programming; Software Engineering; Web Application Development; 
 
-\begin{jobshort}{Designation}{Jan 2021 - present}
-long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width
-\end{jobshort}
-
-
-\begin{joblong}{Designation}{Mar 2019 - Jan 2021}
-\item long long line of blah blah that will wrap when the table fills the column width
-\item again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah
-\end{joblong}
-  
-%Projects
-\section{Projects}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
-\end{tabularx}
-
-%----------------------------------------------------------------------------------------
-%	EDUCATION
-%----------------------------------------------------------------------------------------
-\section{Education}
-\begin{tabularx}{\linewidth}{@{}l X@{}}	
-2030 - present & PhD (Subject) at \textbf{University} \hfill \normalsize (GPA: 4.0/4.0) \\
-
-2023 - 2027 & Bachelor's Degree at \textbf{College} \hfill (GPA: 4.0/4.0) \\ 
-
-2022 & Class 12th Some Board \hfill  (Grades) \\
-
-2021 & Class 10th Some Board \hfill  (Grades) \\
-\end{tabularx}
-
-%----------------------------------------------------------------------------------------
-%	PUBLICATIONS
-%----------------------------------------------------------------------------------------
-\section{Publications}
-\begin{refsection}[citations.bib]
+% PUBLICATIONS
 \nocite{*}
-\printbibliography[heading=none]
-\end{refsection}
+\bibliographystyle{abbrv}
+\bibliography{publication_list}
 
-%----------------------------------------------------------------------------------------
-%	SKILLS
-%----------------------------------------------------------------------------------------
-\section{Skills}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-Some Skills &  \normalsize{This, That, Some of this and that etc.}\\
-Some More Skills  &  \normalsize{Also some more of this, Some more that, And some of this and that etc.}\\  
-\end{tabularx}
+% Experience Section
+\section*{ACADEMIC EXPERIENCE}
 
-\vfill
-\center{\footnotesize Last updated: \today}
+\noindent
+\textbf{Motion Planning Simulation for Autonomous Driving} \\ % Project title
+\textit{Autonomous School Bus for National University of Singapore} \hfill Oct. 2023 | present % Project affiliation and location
+
+\begin{itemize}
+    \item Simulated and visualized four advancing planners using the dataset and the simulator provided by nuplan-devkit; create an evaluation score benchmark for comparison and analysis.
+    \item Designed and simulated a novel learning-based planner based on diffusion model; developing new planner combing advantages of rule-based and learning-based planner.
+    % Job responsibilities and achievements
+\end{itemize}
+
+\noindent
+\textbf{Neural Mechanism of Multi-modal Emotion Recognition Based on Brain Network Analysis} \\ % Project title
+\textit{Provincial Natural Science Foundation Youth Project, Sichuan} \hfill Jan. 2022 | Dec. 2023
+\begin{itemize}
+    \item Conducted research on multi-modal feature fusion between facial video and EEG signal through reviewing the literature; wrote a research proposal.
+    \item Customized transformer and 3D-CNN as classification models; experimented and compared different classifiers to optimize results; 
+    % Job responsibilities and achievements
+\end{itemize}
+
+\noindent
+\textbf{Emotion Judgment System Based on Deep Learning and EEG Analysis} \\ % Project title
+\textit{National Student Research Training Program, China} \hfill May. 2021 | May. 2022 % Position and duration
+\begin{itemize}
+    \item Pre-processed DEAP dataset through band-pass filter and Independent Component Analysis (ICA) by using Python MNE package library.
+    \item Extracted wavelet coefficients using the db4 wavelet of the continuous wavelet decomposition; generate 'scale' (64) dimension from frequency (128 Hz) dimension (Nyquist rate); calculated average energy to Shannon entropy ratio (EER) for each scale; selected appropriate ranges of scale to calculate.
+    \item Built a novel four-classifier by modifying bi-classifier; experimented and filtered the eight dominate channels with the most prominent emotional response to enhance model performance.
+    % Job responsibilities and achievements
+\end{itemize}
+
+\newpage
+\noindent
+\textbf{Functioning Fungi: A model based on climate and interaction trait} \\ % Project title
+\textit{Mathematical Contest in Modelling} \hfill Mar. 2021 | Apr. 2021\\
+\begin{itemize}
+    \item Reviewed related material and literature about modelling tools and the topic of this contest; analysed useful information and recommended all helpful materials to team members.
+    \item Supervised the progress of each member and assisted them in debugging codes and offered suggestions for paper structure; finished conclusion of the paper and collated reference.
+    % Job responsibilities and achievements
+\end{itemize}
+
+\noindent
+\textbf{Design and fabrication of a brain-controlled rolling robot based on OpenBCI-Python-Arduino} \\ % Project title
+\textit{Provincial Student Research Training Program, Sichuan} \hfill Jun. 2020 | May. 2021 % Position and duration
+\begin{itemize}
+    \item Designed and programmed a simple 'admissible heuristic' by utilizing RNN in TensorFlow.
+    \item Pre-processed EEG data using NeuroPype to remove noise; extracted feature through the Common Spatial Pattern (CSP); employed Linear Discriminant Analysis (LDA) as classifier.
+    \item Designed and developed a novel 'Disk' human-computer interaction interface by PyQt of Python. The output of the classifier indirectly controlled the robot by switching 'gears' on the 'Disk' that represent different motion states.
+    % Job responsibilities and achievements
+\end{itemize}
+
+% \section*{AWARDS}
+% \textbf{China-US Young Maker Competition (CUYMC)} \hfill National Second Prize\\ 
+% Ministry of Education of the People's Republic of China \hfill Aug. 2021\\ \\
+% \textbf{17th "Challenge Up"} \hfill National Third Prize\\ 
+% China Association for Science and Technology \hfill Nov. 2021\\ \\
+% \textbf{16th "Challenge Up"} \hfill Provincial First Prize\\ 
+% China Association for Science and Technology \hfill Jul. 2021\\ \\
+% \textbf{Mathematical Contest in Modeling} \hfill Successful Participant\\ 
+% Consortium for Mathematics and Its Applications \hfill 2021\\ \\
+% \textbf{13th Extracurricular Scientific and Technological Innovation Experimental Competition} \hfill First Prize\\ 
+% Southwest Jiaotong University \hfill Jan. 2022\\ \\
+% \textbf{12th Extracurricular Scientific and Technological Innovation Experimental Competition} \hfill Third Prize\\ 
+% Southwest Jiaotong University \hfill Jan. 2021\\ \\
+% \textbf{Comprehensive Scholarship} \hfill Second Prize\\ 
+% Southwest Jiaotong University \hfill Dec. 2021\\ \\
+% \textbf{Excellent Student Cadre} \hfill Excellent\\ 
+% Southwest Jiaotong University \hfill Dec. 2021\\ 
+
+% Work experience section
+\section*{WORK EXPERIENCES}
+\noindent
+\textbf{Xi'an ZhenTec Co., Ltd} \\ % Company
+\textit{Software Engineer, Technical Department} \hfill Jul. 2021 | Sept. 2021 % Position and duration
+\begin{itemize}
+    \item \textit{EEG-based emotion classification:} Created video experimental paradigm; built a experimental platform utilizing marking box, EEG collector, amplifier, and paradigm; programmed data collection script.
+    \item \textit{EEG-based sleep stages monitor:} Implemented OSC port listening to achieve the overall data transmission; developed sleep stages display interface using PyQt.
+\end{itemize}
+
+\section*{EXTRACURRICULAR EXPERIENCES}
+\noindent
+\textbf{School of Mechanics and Aerospace Engineering, Southwest Jiaotong University} \\ % Institution
+\textit{President, Model Aircraft Association} \hfill Sept. 2020 | Jun. 2022 % Position and duration
+\begin{itemize}
+    \item \textit{Competition organization:} Planned and organised 12th and 13th Mechanics Innovation Competitions; responsible for the topics review, material and site preparation, publicity, and result review
+    \item \textit{Vertical take-off and landing (VTOL) project:} Initiated the project sponsored by Leeds Life Foundation; designed structure and completed the deployment of the control devices.
+    \item \textit{Administrative work:} Took charge of the financial management, staff recruitment and documents writing.
+\end{itemize}
+
+\section*{HONOUR}
+\noindent
+National Second Prize, China-US Young Maker Competition (CUYMC); Provincial First Prize \& National Third Prize, 16th \& 17th ”Challenge Up”; Successful Participant, 2021 Mathematical Contest in Modeling; 2020-2021 Comprehensive Second-Prize Scholarship, SWJTU; 2020-2021 Excellent Student Cadre, SWJTU
+
+
+% \section*{ENGLISH \& GRE TESTS}
+%     \begin{tabularx}{1\textwidth}{
+%     >{\raggedright\arraybackslash}X 
+%    >{\raggedright\arraybackslash}X }
+%       \textbf{IELTS (Academic): 7.5} (overall score)&   \textbf{GRE General Test:}\\ \\
+%     Listening: XX | Reading: XX & Quant: XXX | Verbal: XXX\\
+%     Speaking: XX   | Writing: XX& Analytical writing: X\\
+%     Test date: \#Month \#Year &Test date: \#Month \#Year
+%     \end{tabularx}
+
+% Skills Section
+\section*{SKILLS}
+\begin{itemize}
+    \item \textbf{Programming:} Python, C++, MATLAB, C, HTML5, CSS3, JavaScript, Java
+    \item \textbf{Libraries:} PyTorch, nuplan-devkit, TensorFlow, Numpy, Flask, Django, PyQt, Qt, OpenCV
+    \item \textbf{Software:} \LaTeX, Git, Linux, Anaconda, ROS Noetic, Docker, Android Studio, OpenBCI, draw.io, Eprime
+    \item \textbf{Language:} Mandarin (native), English (proficient), Malay (basic), Japanese (basic)
+\end{itemize}
 
 \end{document}
