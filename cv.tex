@@ -1,178 +1,137 @@
-% Document class and font size
-\documentclass[a4paper,9pt]{extarticle}
-
-% Packages
-\usepackage[utf8]{inputenc} % For input encoding
-\usepackage{geometry} % For page margins
-\geometry{letterpaper, margin=0.75in} % Set paper size and margins
-\usepackage{titlesec} % For section title formatting
-\usepackage{enumitem} % For itemized list formatting
-\usepackage{hyperref} % For hyperlinks
-\usepackage{tabularx}
+\documentclass{resume}
+\usepackage{zh_CN-Adobefonts_external} 
+\usepackage{linespacing_fix}
+\usepackage{cite}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
 \usepackage{fancyhdr}
-\usepackage{fontawesome}
 
-\renewcommand{\refname}{PUBLICATIONS}
+\renewcommand{\refname}{论文发表}
 
-
-
-% Formatting
-\setlist{noitemsep} % Removes item separation
-\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}[\titlerule] % Section title format
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip} % Section title spacing
-%%%%%%%%%%
-
-% Begin document
 \begin{document}
-
-% Disable page numbers
-\pagestyle{fancy}
-\renewcommand{\headrulewidth}{0pt}
-\fancyhead{}
-\fancyhead[L]{\textit{Yimin Zhao}}
-\fancyhead[R]{\textit{\today}}
-\thispagestyle{empty} % Remove header from the first page
 \pagenumbering{gobble}
 
-% Header
-\begin{center}
-\textbf{\Huge Yimin Zhao}\\ % Name
+%***"%"后面的所有内容是注释而非代码，不会输出到最后的PDF中
+%***使用本模板，只需要参照输出的PDF，在本文档的相应位置做简单替换即可
+%***修改之后，输出更新后的PDF，只需要点击Overleaf中的“Recompile”按钮即可
 
-\faEnvelope \href{mailto:ztony0712@outlook.com}{ztony0712@outlook.com} | 
-\faGlobe \href{https://ztony0712.github.io/}{https://ztony0712.github.io/} | 
-\faHome Kunming, China % Contact info
-\end{center}
+%在大括号内填写其他信息，最多填写4个，但是如果选择不填信息，
+%那么大括号必须空着不写，而不能删除大括号。
+%\otherInfo后面的四个大括号里的所有信息都会在一行输出
+%如果想要写两行，那就用两次这个指令（\otherInfo{}{}{}{}）即可
 
-\section*{PERSONAL SUMMARY}
-\noindent
-Interested in applying AI in various interdisciplinary fields, especially in biomedical information analysis and autonomous vehicles. Strong project experience in simulation, programming, and EEG analytics. Conducting research in Autonomous School Bus Group supervised by \href{https://guppy.mpe.nus.edu.sg/~mpeangh/}{Prof. Marcelo H. Ang Jr.} in Advanced Robotics Centre of National University of Singapore. Looking for fully funded PhD positions. \\
 
-\noindent
-\textit{Strength:} Have strong execution and sense of responsibility, passionate to explore and learn.
+%***********个人信息**************
+\MyName{赵益民}
+\sepspace
+\faEnvelope \SimpleEntry{\href{mailto:ztony0712@outlook.com}{邮箱：ztony0712@outlook.com}}
+\faPhone \SimpleEntry{电话：13698751959}
+\faGlobe \SimpleEntry{\href{https://ztony0712.github.io/}{个人主页：https://ztony0712.github.io/}}
 
-% Education Section
-\section*{EDUCATION}
-\noindent
-\textbf{National University of Singapore, Singapore} \hfill Aug. 2023 | Present \\ % University name and location
-\textit{Master of Science in Robotics} \hfill GPA: 4.17/5.0 \\
-\textit{Supervisor:} \href{https://guppy.mpe.nus.edu.sg/~mpeangh/}{Prof. Marcelo H. Ang Jr.} \\
-\textit{Representative Modules:} Robot Vision and AI; Autonomous Mobile Robotics; Materials, Sensors, Actuators and Fabrication Technologies; Robot Kinematics; Robot Dynamics and Control  \\
+%************照片**************
+%照片需要放到images文件夹下，名字必须是you.jpg，注意.jpg后缀（可以去resume.cls第101行处修改），如果不需要照片可以不添加此行命令
+%0.15的意思是，照片的宽度是页面宽度的0.15倍，调整大小，避免遮挡文字
+\yourphoto{0.14}
 
-\noindent
-\textbf{University of Leeds, Chengdu, China} \hfill Sept. 2019 | Jun. 2023 \\ % University name and location
-\textit{Bachelor of Science in Computer Science (2:1)}  \hfill Average Score: 72.2/100 \\ % Degree and GPA 
-\textit{Affiliation:} SWJTU-Leeds Joint School, Southwest Jiaotong University \\
-\textit{Representative Modules:} Machine Learning; Algorithms and Data Structures; Artificial Intelligence; Data Mining; Object Oriented Programming; Software Engineering; Web Application Development
+%***********个人总结**************
+\section{个人总结}
+对于将人工智能应用于各种跨学科领域十分感兴趣，尤其是生物医学信息分析和自动驾驶汽车领域。在仿真、编程、脑电图分析等方面有一定的项目经验。在新加坡国立大学高级机器人中心自动驾驶组从事研究工作，由\href{https://guppy.mpe.nus.edu.sg/~mpeangh/}{Prof. Marcelo H. Ang Jr.}指导。有较强的执行力和责任感，热衷于探索和学习。
+\sepspace
 
-% PUBLICATIONS
+%***********教育背景**************
+\section{教育背景}
+%***第一个大括号里的内容向左对齐，第二个大括号里的内容向右对齐
+%***\textbf{}括号里的字是粗体，\textit{}括号里的字是斜体
+\datedsubsection{\textbf{新加坡国立大学，新加坡}}{2023.8 - 至今}
+\datedsubsection{\textit{机器人学硕士}}{GPA: 4.17/5.0}
+\textit{代表课程：} 机器人视觉与AI；自主移动机器人；材料、传感器、执行器和制造技术；机器人运动学；机器人动力学与控制
+\sepspace
+
+\datedsubsection{\textbf{西南交通大学，成都}}{2019.9 - 2023.6}
+\datedsubsection{\textit{计算机科学与技术学士}}{GPA: 88.6/100}
+\textit{代表课程：} 机器学习；算法与数据结构；人工智能；数据挖掘；面向对象编程；软件工程；Web应用开发
+\sepspace
+
+%***********论文发表**************
 \nocite{*}
 \bibliographystyle{abbrv}
 \bibliography{publication_list}
 
-% Experience Section
-\section*{ACADEMIC EXPERIENCE}
-
-\noindent
-\textbf{Feature Fusion Based on Mutual-Cross-Attention Mechanism for EEG Emotion Recognition} \\ % Project title
-\textit{National Natural Science Foundation of China, Singapore} \hfill Dec. 2023 | Mar. 2024
+%***********学术经历**************
+\section{学术经历}
+\datedsubsection{\textbf{用于脑电图情感识别的基于相互交叉注意力机制的特征融合}}{}
+\datedsubsection{\textit{中国国家自然科学基金，新加坡}}{2023.12 - 2024.3}
 \begin{itemize}
-    \item Proposed a purely mathematical MCA which fuse two features more effectively; developed a unique Channel-Frequency-Time 3D feature structure, which presents spectral and temporal information simultaneously. 
-    \item Published to Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024.
-    % Job responsibilities and achievements
+    \item 提出了一种基于纯数学的相互交叉注意力机制（MCA），能更有效地融合两种特征；开发了一种独特的通道-频域-时域三维特征结构，能同时呈现频域和时域信息。
+    \item 构想和设计了未来将MCA应用于Transformer以优化和提升LLM的性能。
+    \item 发表于医学影像计算和计算机辅助干预 - MICCAI 2024。
 \end{itemize}
 
-\noindent
-\textbf{Motion Planning Simulation for Autonomous Driving} \\ % Project title
-\textit{Master Thesis: Final Project Report, Singapore} \hfill Oct. 2023 | Apr. 2024 % Project affiliation and location
+\datedsubsection{\textbf{自动驾驶的运动规划仿真}}{}
+\datedsubsection{\textit{硕士论文：最终项目报告，新加坡}}{2023.10 - 2024.4}
 \begin{itemize}
-    \item Simulated and visualized four advanced planners using the unified dataset and simulator provided by nuplan-devkit; created an evaluation score benchmark for comparison and analysis.
-    \item Designed a novel learning-based planner based on diffusion model; simulated and evaluated the new planner for comparing with the benchmark.
-    % Job responsibilities and achievements
+    \item 使用nuplan-devkit提供的统一数据集和模拟器，对四种先进的规划器进行了仿真和可视化；创建了一个评估分数基准表，用于比较和分析。
+    \item 基于扩散模型设计了一种新的基于学习的规划器；仿真并评估了新规划器与评估分数基准表比较。
 \end{itemize}
 
-\noindent
-\textbf{Emotion Judgment System Based on Deep Learning and EEG Analysis} \\ % Project title
-\textit{National Student Research Training Program, China} \hfill May. 2021 | May. 2022 % Position and duration
+\datedsubsection{\textbf{基于深度学习和脑电图分析的情绪判断系统}}{}
+\datedsubsection{\textit{国家级大学生科研训练计划，中国}}{2021.5 - 2022.5}
 \begin{itemize}
-    \item Pre-processed DEAP dataset through band-pass filter and Independent Component Analysis (ICA) by using Python MNE package library.
-    \item Extracted wavelet coefficients using the db4 wavelet of the continuous wavelet decomposition; generate 'scale' (64) dimension from frequency (128 Hz) dimension (Nyquist rate); calculated average energy to Shannon entropy ratio (EER) for each scale; selected appropriate ranges of scale to calculate.
-    \item Built a novel four-classifier by merging bi-classifier; experimented and filtered the eight dominate channels with the most prominent emotional response to enhance model performance.
-    % Job responsibilities and achievements
+    \item 使用Python MNE包中的带通滤波器和独立成分分析（ICA）对 DEAP 数据集进行预处理。
+    \item 使用连续小波分解的 db4 小波提取小波系数；从频率（128 Hz）维度（奈奎斯特速率）生成大小为64的“尺度”维度；计算每个尺度的平均能量与香农熵比（EER）；选择适当的尺度范围进行计算。
+    \item 通过融合双分类器，建立了一个新颖的四分类器；试验并筛选出情绪反应最突出的八个主要通道，以提高模型性能。
 \end{itemize}
 
-\newpage
-\noindent
-\textbf{Design and fabrication of a brain-controlled rolling robot based on OpenBCI-Python-Arduino} \\ % Project title
-\textit{Provincial Student Research Training Program, China} \hfill Jun. 2020 | May. 2021 % Position and duration
+\datedsubsection{\textbf{基于OpenBCI-Python-Arduino的脑控多功能滚动式机器人的设计与制作}}{}
+\datedsubsection{\textit{省级大学生科研训练计划，四川}}{2020.6 - 2021.5}
 \begin{itemize}
-    \item Designed and programmed a simple 'admissible heuristic' by utilizing RNN in TensorFlow.
-    \item Pre-processed EEG data using NeuroPype to remove noise; extracted feature through the Common Spatial Pattern (CSP); employed Linear Discriminant Analysis (LDA) as classifier.
-    \item Designed and developed a novel 'Disk' human-computer interaction interface by PyQt of Python. The output of the classifier indirectly controlled the robot by switching 'gears' on the 'Disk' that represent different motion states.
-    \item Published to International Conference on Electronics Technology (ICET), 2022.
-    % Job responsibilities and achievements
+    \item 利用TensorFlow中的RNN，设计并编程了一个简单的“可接受启发式”。
+    \item 使用NeuroPype对脑电图数据进行预处理以去除噪声；通过通用空间模式（CSP）提取特征；使用线性判别分析（LDA）作为分类器。
+    \item 用Python的PyQt设计并开发了一个新颖的“圆盘”人机交互界面。分类器的输出通过切换“圆盘”上代表不同运动状态的“档位”间接控制机器人。
+\end{itemize}
+\sepspace
+%***********实习经历**************
+\section{实习经历}
+\datedsubsection{\textbf{西安臻泰智能科技有限公司}}{}
+\datedsubsection{\textit{软件工程师，技术部}}{2021.7 - 2021.9}
+\begin{itemize}
+    \item 基于脑电图的情绪分类：创建视频实验范式；利用打标盒、脑电帽、放大器和范式建立实验平台；编写数据收集脚本。
+    \item 基于脑电图的睡眠阶段监测器：实现 OSC 端口监听，以实现整体数据传输；使用 PyQt 开发睡眠阶段显示界面。
 \end{itemize}
 
-% \section*{AWARDS}
-% \textbf{China-US Young Maker Competition (CUYMC)} \hfill National Second Prize\\ 
-% Ministry of Education of the People's Republic of China \hfill Aug. 2021\\ \\
-% \textbf{17th "Challenge Up"} \hfill National Third Prize\\ 
-% China Association for Science and Technology \hfill Nov. 2021\\ \\
-% \textbf{16th "Challenge Up"} \hfill Provincial First Prize\\ 
-% China Association for Science and Technology \hfill Jul. 2021\\ \\
-% \textbf{Mathematical Contest in Modeling} \hfill Successful Participant\\ 
-% Consortium for Mathematics and Its Applications \hfill 2021\\ \\
-% \textbf{13th Extracurricular Scientific and Technological Innovation Experimental Competition} \hfill First Prize\\ 
-% Southwest Jiaotong University \hfill Jan. 2022\\ \\
-% \textbf{12th Extracurricular Scientific and Technological Innovation Experimental Competition} \hfill Third Prize\\ 
-% Southwest Jiaotong University \hfill Jan. 2021\\ \\
-% \textbf{Comprehensive Scholarship} \hfill Second Prize\\ 
-% Southwest Jiaotong University \hfill Dec. 2021\\ \\
-% \textbf{Excellent Student Cadre} \hfill Excellent\\ 
-% Southwest Jiaotong University \hfill Dec. 2021\\ 
-
-% Work experience section
-\section*{WORK EXPERIENCES}
-\noindent
-\textbf{Xi'an ZhenTec Co., Ltd} \\ % Company
-\textit{Software Engineer, Technical Department} \hfill Jul. 2021 | Sept. 2021 % Position and duration
+%***********社团经历**************
+\section{社团经历}
+\datedsubsection{\textbf{西南交通大学力学与航空航天学院}}{}
+\datedsubsection{\textit{团支部书记，航模协会}}{2020.9 - 2022.6}
 \begin{itemize}
-    \item \textit{EEG-based emotion classification:} Created video experimental paradigm; built a experimental platform utilizing marking box, EEG collector, amplifier, and paradigm; programmed data collection script.
-    \item \textit{EEG-based sleep stages monitor:} Implemented OSC port listening to achieve the overall data transmission; developed sleep stages display interface using PyQt.
+    \item 竞赛组织：策划和组织第十二届和第十三届机械创新大赛；负责题目审查、材料和场地准备、宣传和结果审查。
+    \item 垂直起降（VTOL）项目：启动由利兹生命基金会赞助的VTOL项目；设计结构并完成控制装置的部署。
+    \item 行政工作：负责财务管理、人员招聘和文件撰写。
 \end{itemize}
+\sepspace
 
-\section*{EXTRACURRICULAR EXPERIENCES}
-\noindent
-\textbf{School of Mechanical Engineering} \\ % Institution
-\textit{President, Model Aircraft Association} \hfill Sept. 2020 | Jun. 2022 % Position and duration
-\begin{itemize}
-    \item \textit{Competition organization:} Planned and organised 12th and 13th Mechanics Innovation Competitions; responsible for the topics review, material and site preparation, publicity, and result review.
-    \item \textit{Vertical take-off and landing (VTOL) project:} Initiated the VTOL project sponsored by Leeds Life Foundation; designed structure and completed the deployment of the control devices.
-    \item \textit{Administrative work:} Took charge of the financial management, staff recruitment and documents writing.
-\end{itemize}
+%***********获奖情况**************
+\section{获奖情况}
+\datedsubsection{\textbf{中美青年创客大赛} \textit{国家级二等奖、中美青年合作优胜奖}}{\textit{中华人民共和国教育部 2021.8}}
+\datedsubsection{\textbf{第十七届“挑战杯”} \textit{国家级三等奖}}{\textit{共青团中央青年发展部 2021.11}}
+\datedsubsection{\textbf{第十六届“挑战杯”} \textit{省级一等奖}}{\textit{共青团四川省委 2021.7}}
+\datedsubsection{\textbf{美国大学生数学建模竞赛} \textit{S奖}}{\textit{美国数学及其应用联合会 2021}}
+\datedsubsection{\textbf{第十三届课外科技创新实验竞赛} \textit{金奖}}{\textit{西南交通大学 2022.1}}
+\datedsubsection{\textbf{第十二届课外科技创新实验竞赛} \textit{铜奖}}{\textit{西南交通大学 2021.1}}
+\datedsubsection{\textbf{综合奖学金} \textit{二等奖}}{\textit{西南交通大学 2021.12}}
+\datedsubsection{\textbf{优秀学生干部}}{\textit{西南交通大学 2021.12}}
+\sepspace
 
-\section*{HONOUR}
-\begin{itemize}
-    \item National Second Prize, China-US Young Maker Competition (CUYMC)
-    \item Successful Participant, 2021 Mathematical Contest in Modeling
-\end{itemize}
-
-% \section*{ENGLISH \& GRE TESTS}
-%     \begin{tabularx}{1\textwidth}{
-%     >{\raggedright\arraybackslash}X 
-%    >{\raggedright\arraybackslash}X }
-%       \textbf{IELTS (Academic): 7.5} (overall score)&   \textbf{GRE General Test:}\\ \\
-%     Listening: XX | Reading: XX & Quant: XXX | Verbal: XXX\\
-%     Speaking: XX   | Writing: XX& Analytical writing: X\\
-%     Test date: \#Month \#Year &Test date: \#Month \#Year
-%     \end{tabularx}
-
-% Skills Section
-\section*{SKILLS}
-\begin{itemize}
-    \item \textbf{Programming:} Python, C++, MATLAB, C, HTML5, CSS3, JavaScript, Java
-    \item \textbf{Libraries:} PyTorch, nuplan-devkit, TensorFlow, Numpy, Flask, Django, PyQt, Qt, OpenCV
-    \item \textbf{Software:} \LaTeX, Git, Linux, Anaconda, ROS Noetic, ROS Humble, Docker, OpenBCI, Eprime
-    \item \textbf{Language:} Mandarin (native), English (proficient), Japanese (basic)
-\end{itemize}
+\section{专业技能}
+\datedsubsection{\textbf{编程语言}：Python, C++, MATLAB, C, HTML5, CSS3, JavaScript, Java}{}
+\datedsubsection{\textbf{编程库}：PyTorch, nuplan-devkit, TensorFlow, Numpy, Flask, Django, PyQt, Qt, OpenCV}{}
+\datedsubsection{\textbf{软件应用}：\LaTeX, Git, Linux, Anaconda, ROS Noetic, ROS Humble, Docker, OpenBCI, Eprime}{}
+\datedsubsection{\textbf{语言}：\textit{中文（母语），英语（精通），日语（基础）}}{}
+\sepspace
 
 \end{document}
