@@ -15,6 +15,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-latex-recommended texlive-latex-extra latexmk
+          sudo apt-get install -y texlive-lang-chinese
 
       - name: Build LaTeX document using Makefile
         run: make all
